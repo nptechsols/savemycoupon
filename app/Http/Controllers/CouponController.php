@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Coupon;
+use App\Website;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller {
@@ -27,7 +28,8 @@ class CouponController extends Controller {
 	 */
 	public function create()
 	{
-		return view('coupons.create');
+		$items = Website::all('id','website');
+		return view('coupons.create',compact('items'));
 	}
 
 	/**
@@ -41,8 +43,6 @@ class CouponController extends Controller {
 			 $this->validate($request, [
 	        'coupon_code' => 'required|max:255',
 	        'website' => 'required',
-	        'description' => 'required',
-	        'expiry_date' => 'required',
     	]);
 
 		$coupon = new Coupon();

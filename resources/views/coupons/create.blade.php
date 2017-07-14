@@ -19,10 +19,15 @@
 
                 <div class="form-group @if($errors->has('coupon_code')) has-error @endif">
                        <label for="coupon_code-field">Coupon_code</label>
-                    <input type="text" id="coupon_code-field" name="coupon_code" class="form-control" value="{{ old("coupon_code") }}"/>
+                    <!-- <input type="text" id="coupon_code-field" name="coupon_code" class="form-control" value="{{ old("coupon_code") }}"/> -->
                        @if($errors->has("coupon_code"))
                         <span class="help-block">{{ $errors->first("coupon_code") }}</span>
                        @endif
+                        <select  id="branchesse_id-field" name="branchesse_id" class="form-control" >  
+                       @foreach($items as $item)
+                       <option  value="{{$item->website}}">{{$item->website}}</option>
+                       @endforeach
+                     </select>
                     </div>
                     <div class="form-group @if($errors->has('website')) has-error @endif">
                        <label for="website-field">Website</label>

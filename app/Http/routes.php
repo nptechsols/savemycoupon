@@ -15,3 +15,5 @@ Route::get('/', 'CouponController@index');
 
 
 Route::resource("coupons","CouponController"); 
+
+Route::resource("websites","WebsiteController"); 

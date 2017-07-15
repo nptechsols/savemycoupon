@@ -19,23 +19,30 @@
 
                 <div class="form-group @if($errors->has('coupon_code')) has-error @endif">
                        <label for="coupon_code-field">Coupon_code</label>
-                    <!-- <input type="text" id="coupon_code-field" name="coupon_code" class="form-control" value="{{ old("coupon_code") }}"/> -->
+                    <input type="text" id="coupon_code-field" name="coupon_code" class="form-control" value="{{ old("coupon_code") }}"/>
                        @if($errors->has("coupon_code"))
                         <span class="help-block">{{ $errors->first("coupon_code") }}</span>
                        @endif
-                        <select  id="branchesse_id-field" name="branchesse_id" class="form-control" >  
+                        
+                    </div>
+
+
+                    
+                    <div class="form-group @if($errors->has('website')) has-error @endif">
+                       <label for="website-field">Website</label>
+                   <!--  <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/> -->
+                       @if($errors->has("website"))
+                        <span class="help-block">{{ $errors->first("website") }}</span>
+                       @endif
+                       <select  id="website-field" name="website" class="form-control" >  
                        @foreach($items as $item)
                        <option  value="{{$item->website}}">{{$item->website}}</option>
                        @endforeach
                      </select>
                     </div>
-                    <div class="form-group @if($errors->has('website')) has-error @endif">
-                       <label for="website-field">Website</label>
-                    <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/>
-                       @if($errors->has("website"))
-                        <span class="help-block">{{ $errors->first("website") }}</span>
-                       @endif
-                    </div>
+
+
+
                     <div class="form-group @if($errors->has('description')) has-error @endif">
                        <label for="description-field">Description</label>
                     <textarea class="form-control" id="description-field" rows="3" name="description">{{ old("description") }}</textarea>

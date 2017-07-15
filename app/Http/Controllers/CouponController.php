@@ -81,7 +81,9 @@ class CouponController extends Controller {
 	{
 		$coupon = Coupon::findOrFail($id);
 
-		return view('coupons.edit', compact('coupon'));
+		$items = Website::all('id','website');
+
+		return view('coupons.edit', compact('coupon','items'));
 	}
 
 	/**

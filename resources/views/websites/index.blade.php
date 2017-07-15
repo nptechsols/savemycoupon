@@ -17,7 +17,7 @@
                 <table class="table table-condensed table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                           <!--  <th>ID</th> -->
                             <th>WEBSITE</th>
                             <th>LOGO</th>
                             <th class="text-right">OPTIONS</th>
@@ -27,7 +27,7 @@
                     <tbody>
                         @foreach($websites as $website)
                             <tr>
-                                <td>{{$website->id}}</td>
+                               <!--  <td>{{$website->id}}</td> -->
                                 <td>{{$website->website}}</td>
                                 <td>{{$website->logo}}</td>
                                 <td class="text-right">

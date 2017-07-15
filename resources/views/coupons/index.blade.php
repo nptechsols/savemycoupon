@@ -17,7 +17,7 @@
                 <table class="table table-condensed table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                          <!--   <th>ID</th> -->
                             <th>COUPON_CODE</th>
                         <th>WEBSITE</th>
                         <th>DESCRIPTION</th>
@@ -29,7 +29,7 @@
                     <tbody>
                         @foreach($coupons as $coupon)
                             <tr>
-                                <td>{{$coupon->id}}</td>
+                               <!--  <td>{{$coupon->id}}</td> -->
                                 <td>{{$coupon->coupon_code}}</td>
                     <td>{{$coupon->website}}</td>
                     <td>{{$coupon->description}}</td>

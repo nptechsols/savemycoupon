@@ -4,7 +4,7 @@
 @endsection
 @section('header')
     <div class="page-header">
-        <h1><i class="glyphicon glyphicon-edit"></i> Coupons / Edit #{{$coupon->id}}</h1>
+        <h1><i class="glyphicon glyphicon-edit"></i> Coupons / Edit #{{$coupon->coupon_code}}</h1>
     </div>
 @endsection
 
@@ -27,10 +27,17 @@
                     </div>
                     <div class="form-group @if($errors->has('website')) has-error @endif">
                        <label for="website-field">Website</label>
-                    <input type="text" id="website-field" name="website" class="form-control" value="{{ is_null(old("website")) ? $coupon->website : old("website") }}"/>
+                    <!-- <input type="text" id="website-field" name="website" class="form-control" value="{{ is_null(old("website")) ? $coupon->website : old("website") }}"/> -->
                        @if($errors->has("website"))
                         <span class="help-block">{{ $errors->first("website") }}</span>
                        @endif
+
+                       <select  id="website-field" name="website" class="form-control" >  
+                       @foreach($items as $item)
+                       <option  value="{{$item->website}}">{{$item->website}}</option>
+                       @endforeach
+                     </select>
+                     
                     </div>
                     <div class="form-group @if($errors->has('description')) has-error @endif">
                        <label for="description-field">Description</label>

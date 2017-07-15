@@ -70,7 +70,7 @@ class WebsiteController extends Controller {
 
 		$storagePath  = Storage::url($website->logo);
 
-		return view('websites.show', compact('website'));
+		return view('websites.show', compact('website','storagePath'));
 	}
 
 	/**

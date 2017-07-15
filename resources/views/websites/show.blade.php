@@ -1,7 +1,7 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
-        <h1>Websites / Show #{{$website->id}}</h1>
+        <h1>Websites / Show #{{$website->website}}</h1>
         <form action="{{ route('websites.destroy', $website->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -18,19 +18,19 @@
         <div class="col-md-12">
 
             <form action="#">
-                <div class="form-group">
+               <!--  <div class="form-group">
                     <label for="nome">ID</label>
                     <p class="form-control-static"></p>
-                </div>
+                </div> -->
                 <div class="form-group">
                      <label for="website">WEBSITE</label>
                      <p class="form-control-static">{{$website->website}}</p>
                 </div>
 
-               <!--  <div class="form-group">
-                     <label for="logo">Profile Picture</label>
+                <div class="form-group">
+                     <label for="logo">LOGO</label>
                      <p class="form-control-static"><img src="{{ $storagePath }}" width="200px" height="200px"/></p>
-                </div> -->
+                </div>
             </form>
 
             <a class="btn btn-link" href="{{ route('websites.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>

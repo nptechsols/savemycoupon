@@ -1,7 +1,7 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
-        <h1>Coupons / Show #{{$coupon->id}}</h1>
+        <h1>Coupons / Show #{{$coupon->coupon_code}}</h1>
         <form action="{{ route('coupons.destroy', $coupon->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -18,10 +18,10 @@
         <div class="col-md-12">
 
             <form action="#">
-                <div class="form-group">
+               <!--  <div class="form-group">
                     <label for="nome">ID</label>
                     <p class="form-control-static"></p>
-                </div>
+                </div> -->
                 <div class="form-group">
                      <label for="coupon_code">COUPON_CODE</label>
                      <p class="form-control-static">{{$coupon->coupon_code}}</p>

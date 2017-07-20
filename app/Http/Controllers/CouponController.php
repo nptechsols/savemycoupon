@@ -11,6 +11,10 @@ use Carbon\Carbon;
 
 class CouponController extends Controller {
 
+	public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['index', 'updaterecruiter','changepassword']]);
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -18,7 +22,7 @@ class CouponController extends Controller {
 	 */
 	public function index()
 	{
-		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(4);
+		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(16);
 
 		return view('coupons.index', compact('coupons'));
 	}

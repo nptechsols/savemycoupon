@@ -42,16 +42,32 @@ class WebsiteController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+
+		$this->validate($request, [
+	        'logo' => 'required | mimes:jpeg,jpg,png | max:1000',
+	        'file_upload' => 'mimes:doc,pdf,docx',
+    	]);
 		$website = new Website();
 
 		$website->website = $request->input("website");
 
 		// Profile Pic storage
 		$file = $request->file('logo');
-		$extension = $file->getClientOriginalExtension();
-		Storage::disk('public')->put($website->code.'.'.$extension,  File::get($file));
+		$extension = $file->getClientOriginalName();
+		Storage::disk('public')->put($extension,  File::get($file->getRealPath()));
 
-		$website->logo = $website->code.'.'.$extension;
+		$website->logo = $extension;
+
+
+		// File_upload storage
+		$file1 = $request->file('file_upload');
+		$extension = $file1->getClientOriginalName();
+		Storage::disk('public')->put($extension,  File::get($file1->getRealPath()));
+
+		$website->file_upload = $extension;
+
+		// $website->file_upload = $extension;
+
 
 		$website->save();
 
@@ -70,7 +86,9 @@ class WebsiteController extends Controller {
 
 		$storagePath  = Storage::url($website->logo);
 
-		return view('websites.show', compact('website','storagePath'));
+		$storagePath1  = Storage::url($website->file_upload);
+
+		return view('websites.show', compact('website','storagePath','storagePath1'));
 	}
 
 	/**
@@ -103,9 +121,22 @@ class WebsiteController extends Controller {
 		if ($request->file('logo')) {
 			$file = $request->file('logo');
 			$extension = $file->getClientOriginalExtension();
-			Storage::disk('public')->put($website->code.'.'.$extension,  File::get($file));
+			Storage::disk('public')->put($extension,  File::get($file));
 
-			$website->logo = $website->code.'.'.$extension;
+			$website->logo = $extension;
+
+			$website->file_upload = $extension;
+		}
+
+		// File_upload storage
+		if ($request->file('file_upload')) {
+			$file1 = $request->file('file_upload');
+			$extension = $file1->getClientOriginalExtension();
+			Storage::disk('public')->put($extension,  File::get($file1));
+
+			$website->file_upload = $extension;
+
+			
 		}
 
 		$website->save();

@@ -7,6 +7,8 @@ use App\Coupon;
 use App\Website;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
 class CouponController extends Controller {
 
 	/**
@@ -16,7 +18,7 @@ class CouponController extends Controller {
 	 */
 	public function index()
 	{
-		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(10);
+		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(4);
 
 		return view('coupons.index', compact('coupons'));
 	}
@@ -50,8 +52,8 @@ class CouponController extends Controller {
 		$coupon->coupon_code = $request->input("coupon_code");
         $coupon->website = $request->input("website");
         $coupon->description = $request->input("description");
-        $coupon->expiry_date = date("Y-m-d", strtotime($request->input("expiry_date")));
-        // $employee->date_of_brith = date("Y-m-d", strtotime($request->input("date_of_brith")));
+        $coupon->expiry_date =  date("Y-m-d", strtotime($request->input("expiry_date")));
+      
 
 		$coupon->save();
 

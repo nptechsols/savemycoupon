@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', 'CouponController@index');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/', 'CouponController@index');
 
 
-Route::resource("coupons","CouponController"); 
+Route::resource("/coupons","CouponController"); 
 
 Route::resource("websites","WebsiteController"); 
+
+Route::auth();
+
+// Route::get('/coupons', 'CouponController@index');

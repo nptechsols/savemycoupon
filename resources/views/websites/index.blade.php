@@ -20,6 +20,7 @@
                            <!--  <th>ID</th> -->
                             <th>WEBSITE</th>
                             <th>LOGO</th>
+                            <th>FILE UPLOAD</th>
                             <th class="text-right">OPTIONS</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@
                                <!--  <td>{{$website->id}}</td> -->
                                 <td>{{$website->website}}</td>
                                 <td>{{$website->logo}}</td>
+                                 <td>{{$website->file_upload}}</td>
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-primary" href="{{ route('websites.show', $website->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('websites.edit', $website->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>

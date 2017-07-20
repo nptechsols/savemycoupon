@@ -31,6 +31,11 @@
                      <label for="logo">LOGO</label>
                      <p class="form-control-static"><img src="{{ $storagePath }}" width="200px" height="200px"/></p>
                 </div>
+
+                <div class="form-group">
+                     <label for="file_upload">FILE UPLOAD</label>
+                     <p class="form-control-static"><img src="{{ $storagePath1 }}" /></p>
+                </div>
             </form>
 
             <a class="btn btn-link" href="{{ route('websites.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>

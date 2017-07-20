@@ -37,6 +37,17 @@
                     </div>
 
 
+                     <div class="form-group @if($errors->has('file_upload')) has-error @endif">
+            <label for="file_upload-field">File upload</label>
+            
+            <input type="file" id="file_upload-field" name="file_upload" class="form-control">
+            
+            @if($errors->has("file_upload"))
+              <span class="help-block">{{ $errors->first("file_upload") }}</span>
+            @endif
+                    </div>
+
+
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a class="btn btn-link pull-right" href="{{ route('websites.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>

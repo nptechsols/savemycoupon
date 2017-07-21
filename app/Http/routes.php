@@ -17,10 +17,29 @@ Route::get('/', function () {
 
 // Route::get('/', 'CouponController@index');
 
+// Route::resource('/coupons',
+// 				 ['middleware' => 'auth',  function () {
+//     return view('CouponController');
+// }]);
+
+// Route::resource('/websites',['middleware' => 'auth', function () {
+//     return view('WebsiteController');
+// }]);
+
+// Route::get('coupons', [
+//     'middleware' => 'auth',
+//     'uses' => 'CouponController'
+// ]);
+
+// Route::get('websites', [
+//     'middleware' => 'auth',
+//     'uses' => 'WebsiteController'
+// ]);
+
 
 Route::resource("/coupons","CouponController"); 
 
-Route::resource("websites","WebsiteController"); 
+Route::resource("/websites","WebsiteController"); 
 
 Route::auth();
 

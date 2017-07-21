@@ -37,7 +37,7 @@
                     </div>
 
 
-                     <div class="form-group @if($errors->has('file_upload')) has-error @endif">
+                   <!--   <div class="form-group @if($errors->has('file_upload')) has-error @endif">
             <label for="file_upload-field">File upload</label>
             
             <input type="file" id="file_upload-field" name="file_upload" class="form-control">
@@ -46,7 +46,7 @@
               <span class="help-block">{{ $errors->first("file_upload") }}</span>
             @endif
                     </div>
-
+ -->
 
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">Create</button>

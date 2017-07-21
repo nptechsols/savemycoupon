@@ -12,6 +12,11 @@ use File;
 use DateTime;
 class WebsiteController extends Controller {
 
+	public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['index']]);
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -45,7 +50,8 @@ class WebsiteController extends Controller {
 
 		$this->validate($request, [
 	        'logo' => 'required | mimes:jpeg,jpg,png | max:1000',
-	        'file_upload' => 'mimes:doc,pdf,docx',
+	        // 'file_upload' => 'mimes:doc,pdf,docx', 
+	        'website' => 'required|unique:websites',
     	]);
 		$website = new Website();
 
@@ -59,12 +65,12 @@ class WebsiteController extends Controller {
 		$website->logo = $extension;
 
 
-		// File_upload storage
-		$file1 = $request->file('file_upload');
-		$extension = $file1->getClientOriginalName();
-		Storage::disk('public')->put($extension,  File::get($file1->getRealPath()));
+		// // File_upload storage
+		// $file1 = $request->file('file_upload');
+		// $extension = $file1->getClientOriginalName();
+		// Storage::disk('public')->put($extension,  File::get($file1->getRealPath()));
 
-		$website->file_upload = $extension;
+		// $website->file_upload = $extension;
 
 		// $website->file_upload = $extension;
 
@@ -86,9 +92,9 @@ class WebsiteController extends Controller {
 
 		$storagePath  = Storage::url($website->logo);
 
-		$storagePath1  = Storage::url($website->file_upload);
+		// $storagePath1  = Storage::url($website->file_upload);
 
-		return view('websites.show', compact('website','storagePath','storagePath1'));
+		return view('websites.show', compact('website','storagePath'));
 	}
 
 	/**
@@ -125,19 +131,19 @@ class WebsiteController extends Controller {
 
 			$website->logo = $extension;
 
-			$website->file_upload = $extension;
+			// $website->file_upload = $extension;
 		}
 
-		// File_upload storage
-		if ($request->file('file_upload')) {
-			$file1 = $request->file('file_upload');
-			$extension = $file1->getClientOriginalExtension();
-			Storage::disk('public')->put($extension,  File::get($file1));
+		// // File_upload storage
+		// if ($request->file('file_upload')) {
+		// 	$file1 = $request->file('file_upload');
+		// 	$extension = $file1->getClientOriginalExtension();
+		// 	Storage::disk('public')->put($extension,  File::get($file1));
 
-			$website->file_upload = $extension;
+		// 	$website->file_upload = $extension;
 
 			
-		}
+		// }
 
 		$website->save();
 

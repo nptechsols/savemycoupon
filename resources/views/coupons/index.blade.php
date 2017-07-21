@@ -18,13 +18,13 @@
                     <div class="col-md-3">
                             <p><h5><b>COUPON_CODE</b></h5> 
                             {{$coupon->coupon_code}}</p>
-                            <p><h5><b>WEBSITE</b></h5>  
+                            <p><h5><b>LOGO</b></h5>  
                             {{$coupon->website}}</p>
                             <p><h5><b>DESCRIPTION</b></h5> 
                             {{$coupon->description}}</p>
                             <p><h5><b>EXPIRY_DATE</h5></b> 
                             {{$coupon->expiry_date}}</p>
-                            <h5 class="text-left"><b>OPTIONS</b></h5> : 
+                            <!-- <h5 class="text-left"><b>OPTIONS</b></h5> : --> 
                                 <p class="text-left">
                                     <a class="btn btn-xs btn-primary" href="{{ route('coupons.show', $coupon->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('coupons.edit', $coupon->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>

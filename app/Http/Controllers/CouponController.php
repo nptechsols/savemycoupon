@@ -34,7 +34,7 @@ class CouponController extends Controller {
 	 */
 	public function create()
 	{
-		$items = Website::all('id','website');
+		$items = Website::all('id','website','logo');
 		return view('coupons.create',compact('items'));
 	}
 

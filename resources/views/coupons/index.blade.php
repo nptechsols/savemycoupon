@@ -19,9 +19,9 @@
                             <p><h5><b>COUPON_CODE</b></h5> 
                             {{$coupon->coupon_code}}</p>
                             <p><h5><b>LOGO</b></h5>  
-                            {{$coupon->website}}</p>
-                            <p><h5><b>DESCRIPTION</b></h5> 
-                            {{$coupon->description}}</p>
+                            {{@$coupon->website->logo}}</p>
+                            <!-- <p><h5><b>DESCRIPTION</b></h5> 
+                            {{$coupon->description}}</p> -->
                             <p><h5><b>EXPIRY_DATE</h5></b> 
                             {{$coupon->expiry_date}}</p>
                             <!-- <h5 class="text-left"><b>OPTIONS</b></h5> : --> 

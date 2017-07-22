@@ -28,7 +28,7 @@
                 </div>
                     <div class="form-group">
                      <label for="website">WEBSITE</label>
-                     <p class="form-control-static">{{$coupon->website}}</p>
+                     <p class="form-control-static">{{$coupon->website->website}}</p>
                 </div>
                     <div class="form-group">
                      <label for="description">DESCRIPTION</label>

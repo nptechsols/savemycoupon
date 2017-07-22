@@ -36,7 +36,7 @@
                        @endif
                        <select  id="website-field" name="website" class="form-control" >  
                        @foreach($items as $item)
-                       <option  value="{{$item->website}}">{{$item->website}}</option>
+                       <option  value="{{$item->id}}">{{$item->website}}</option>
                        @endforeach
                      </select>
                     </div>

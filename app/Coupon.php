@@ -9,6 +9,8 @@ class Coupon extends Model
 
 	// protected $dates = ['expiry_date'];
 	public $timestamps = false;
+
+	protected $fillable = ['website_id'];
 	
     public function website()
 	{

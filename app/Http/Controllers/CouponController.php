@@ -13,7 +13,7 @@ class CouponController extends Controller {
 
 	public function __construct()
     {
-        $this->middleware('auth', ['only' => ['index', 'updaterecruiter','changepassword']]);
+        $this->middleware('auth', ['only' => ['index', 'create','store','show','edit','update','destroy']]);
     }
 	/**
 	 * Display a listing of the resource.
@@ -54,7 +54,7 @@ class CouponController extends Controller {
 		$coupon = new Coupon();
 
 		$coupon->coupon_code = $request->input("coupon_code");
-        $coupon->website = $request->input("website");
+        $coupon->website_id = $request->input("website");
         $coupon->description = $request->input("description");
         $coupon->expiry_date =  date("Y-m-d", strtotime($request->input("expiry_date")));
       
@@ -104,7 +104,7 @@ class CouponController extends Controller {
 		$coupon = Coupon::findOrFail($id);
 
 		$coupon->coupon_code = $request->input("coupon_code");
-        $coupon->website = $request->input("website");
+        $coupon->website_id = $request->input("website");
         $coupon->description = $request->input("description");
         $coupon->expiry_date = date("Y-m-d", strtotime($request->input("expiry_date")));
 

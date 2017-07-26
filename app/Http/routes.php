@@ -43,4 +43,5 @@ Route::resource("/websites","WebsiteController");
 
 Route::auth();
 
+
 // Route::get('/coupons', 'CouponController@index');

@@ -23,7 +23,7 @@
                                     <a class="btn btn-xs btn-primary" href="{{ route('coupons.show', $coupon->id) }}"><i class="glyphicon glyphicon-eye-open"></i> </a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('coupons.edit', $coupon->id) }}"><i class="glyphicon glyphicon-edit"></i> </a> &nbsp;
                                     <form action="{{ route('coupons.destroy', $coupon->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
-                                        <input type="hidden" name="_meh5od" value="DELETE">
+                                        <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
                                     </form>

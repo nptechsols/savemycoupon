@@ -56,6 +56,8 @@ class CouponController extends Controller {
 		$coupon->coupon_code = $request->input("coupon_code");
         $coupon->website_id = $request->input("website");
         $coupon->description = $request->input("description");
+
+        if($request->input("expiry_date") != null)
         $coupon->expiry_date =  date("Y-m-d", strtotime($request->input("expiry_date")));
       
 
@@ -106,6 +108,8 @@ class CouponController extends Controller {
 		$coupon->coupon_code = $request->input("coupon_code");
         $coupon->website_id = $request->input("website");
         $coupon->description = $request->input("description");
+
+        if($request->input("expiry_date") != null)
         $coupon->expiry_date = date("Y-m-d", strtotime($request->input("expiry_date")));
 
 		$coupon->save();

@@ -43,5 +43,12 @@ Route::resource("/websites","WebsiteController");
 
 Route::auth();
 
+Route::get('admin/profile', ['middleware' => 'admin', function () {  
+    return view('CouponController@index');
+}]);
+
+
+Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'WebsiteController@index'));
+Route::get('searchajax',array('as'=>'searchajax','uses'=>'WebsiteController@autoComplete'));
 
 // Route::get('/coupons', 'CouponController@index');

@@ -14,7 +14,7 @@ class WebsiteController extends Controller {
 
 	public function __construct()
     {
-        $this->middleware('auth', ['only' => ['index', 'create','store','show','edit','update','destroy']]);
+        $this->middleware('auth', ['only' => [ 'create','edit','update','destroy']]);
     }
 
 	/**
@@ -28,6 +28,23 @@ class WebsiteController extends Controller {
 
 		return view('websites.index', compact('websites'));
 	}
+
+	public function autoComplete(Request $request) {
+        $query = $request->get('term','');
+        
+        $websites=Website::where('website','LIKE','%'.$query.'%')->get();
+        
+        $data=array();
+        foreach ($websites as $website) {
+                $data[]=array('value'=>$website->website,'id'=>$website->id);
+        }
+        if(count($data))
+             return $data;
+        else
+            return ['value'=>'No Result Found','id'=>''];
+    }
+
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -159,8 +176,20 @@ class WebsiteController extends Controller {
 	public function destroy($id)
 	{
 		$website = Website::findOrFail($id);
-		$website->delete();
+		// File::delete();
 
+		  // if(file_exists('/storage/{{$coupon->website->logo}}')){
+    //     @unlink('/storage/{{$coupon->website->logo}}');
+    // }
+    // parent::delete();
+
+
+
+	    $image_path = public_path().'/storage'.website->logo;
+	    unlink($image_path);
+	    $website->delete();
+	   
+ 
 		return redirect()->route('websites.index')->with('message', 'Item deleted successfully.');
 	}
 

@@ -17,14 +17,15 @@
             <form action="{{ route('websites.store') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+               <!--  {!! Form::text('search_text', null, array('placeholder' => 'Search Text','class' => 'form-control','id'=>'search_text')) !!} -->
+
                 <div class="form-group @if($errors->has('website')) has-error @endif">
                        <label for="website-field">Website</label>
-                    <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/>
+                    <input type="text" id="website-field search_text" name="website" class="form-control" value="{{ old("website") }}"/>
                        @if($errors->has("website"))
                         <span class="help-block">{{ $errors->first("website") }}</span>
-                       @endif
-                       
-                    </div>
+                       @endif                      
+                </div>
 
                       <div class="form-group @if($errors->has('logo')) has-error @endif">
             <label for="logo-field">Logo upload</label>
@@ -63,4 +64,27 @@
     $('.date-picker').datepicker({
     });
   </script>
+
+      <script>
+   $(document).ready(function() {
+    src = "{{ route('searchajax') }}";
+     $("#search_text").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: src,
+                dataType: "json",
+                data: {
+                    term : request.term
+                },
+                success: function(data) {
+                    response(data);
+                   
+                }
+            });
+        },
+        minLength: 3,
+       
+    });
+});
+</script>
 @endsection

@@ -1,6 +1,8 @@
 @extends('layout')
 @section('css')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 @endsection
 @section('header')
     <div class="page-header">
@@ -68,10 +70,13 @@
 @endsection
 @section('scripts')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script>
     $('.date-picker').datepicker({
      format: 'mm/dd/yyyy'
-
     });
+  </script>
+  <script>
+     $('select').select2();
   </script>
 @endsection

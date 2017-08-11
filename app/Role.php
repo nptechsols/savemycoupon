@@ -9,6 +9,6 @@ class Role extends Model
 	public $timestamps = false;
 
     public function users() {
-    	$this->belongsToMany('App\\User');
+    	$this->belongsToMany('App\User');
     }
 }

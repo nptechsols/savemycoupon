@@ -176,17 +176,20 @@ class WebsiteController extends Controller {
 	public function destroy($id)
 	{
 		$website = Website::findOrFail($id);
-		// File::delete();
+	    $image_path = "C:\wamp1\www\savemycoupon\public\storage";
 
-		  // if(file_exists('/storage/{{$coupon->website->logo}}')){
-    //     @unlink('/storage/{{$coupon->website->logo}}');
-    // }
-    // parent::delete();
+	   // unlink($image_path);
+
+	   if (!$image_path) {
+		unlink($image_path);
+		return false;
+		}
+
+	    // $image_path = "C:\wamp1\www\savemycoupon\storage\app\public";
+	    // $file = new File();
+	    // $file->delete('C:\wamp1\www\savemycoupon\storage\app\public');
 
 
-
-	    $image_path = public_path().'/storage'.website->logo;
-	    unlink($image_path);
 	    $website->delete();
 	   
  

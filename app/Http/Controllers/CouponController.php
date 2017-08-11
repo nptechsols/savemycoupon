@@ -128,6 +128,7 @@ class CouponController extends Controller {
 		$coupon = Coupon::findOrFail($id);
 		$coupon->delete();
 
+
 		return redirect()->route('coupons.index')->with('message', 'Item deleted successfully.');
 	}
 

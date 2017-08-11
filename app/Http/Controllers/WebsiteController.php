@@ -26,6 +26,7 @@ class WebsiteController extends Controller {
 	{
 		$websites = Website::orderBy('id', 'desc')->paginate(10);
 
+		// var_dump(storage_path());
 		return view('websites.index', compact('websites'));
 	}
 
@@ -176,24 +177,12 @@ class WebsiteController extends Controller {
 	public function destroy($id)
 	{
 		$website = Website::findOrFail($id);
-	    $image_path = "C:\wamp1\www\savemycoupon\public\storage";
 
-	   // unlink($image_path);
-
-	   if (!$image_path) {
-		unlink($image_path);
-		return false;
-		}
-
-	    // $image_path = "C:\wamp1\www\savemycoupon\storage\app\public";
-	    // $file = new File();
-	    // $file->delete('C:\wamp1\www\savemycoupon\storage\app\public');
-
+		File::delete(storage_path()."/app/public/".$website->logo);
 
 	    $website->delete();
-	   
- 
-		return redirect()->route('websites.index')->with('message', 'Item deleted successfully.');
+
+	    return redirect()->route('websites.index')->with('message', 'Item deleted successfully.');
 	}
 
 }

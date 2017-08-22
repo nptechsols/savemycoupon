@@ -3,7 +3,7 @@
 @extends('layout')
 @section('css')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+ <!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> -->
 
 @endsection
 @section('header')
@@ -78,9 +78,9 @@
      format: 'mm/dd/yyyy'
     });
   </script>
-  <script>
+  <!-- <script>
      $('select').select2();
-  </script>
+  </script> -->
 @endsection
 
 @else

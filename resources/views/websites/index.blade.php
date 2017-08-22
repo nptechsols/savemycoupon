@@ -1,3 +1,5 @@
+@if(session()->get('role_id')==1)
+
 @extends('layout')
 
 @section('header')
@@ -56,3 +58,11 @@
   
 
 @endsection
+
+@else
+
+    <script type="text/javascript">
+        window.location = "{{ url('login') }}";
+    </script>
+
+@endif

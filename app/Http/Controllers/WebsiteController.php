@@ -141,11 +141,26 @@ class WebsiteController extends Controller {
 
 		$website->website = $request->input("website");
 
+
+		/*
+			$website = new Website();
+
+		$website->website = $request->input("website");
+
+		// Profile Pic storage
+		$file = $request->file('logo');
+		$extension = $file->getClientOriginalName();
+		Storage::disk('public')->put($extension,  File::get($file->getRealPath()));
+
+		$website->logo = $extension;
+
+		*/
+
 		// Logo Pic storage
 		if ($request->file('logo')) {
 			$file = $request->file('logo');
 			$extension = $file->getClientOriginalExtension();
-			Storage::disk('public')->put($extension,  File::get($file));
+			$img = Storage::disk('public')->put($extension,  File::get($file));
 
 			$website->logo = $extension;
 

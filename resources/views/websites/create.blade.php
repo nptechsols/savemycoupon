@@ -1,6 +1,7 @@
 @if(session()->get('role_id')==1)
 
 @extends('layout')
+
 @section('css')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
@@ -84,3 +85,5 @@
     </script>
 
 @endif
+
+

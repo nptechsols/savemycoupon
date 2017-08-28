@@ -1,4 +1,5 @@
 @if(session()->get('role_id')==2)
+
 @extends('layout')
 
 @section('header')

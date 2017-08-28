@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Session;
+use Illuminate\Http\Request;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
@@ -32,16 +34,16 @@ class AuthController extends Controller
      * @var string
      */
 
-    //   protected function authenticated(Request $request, $user)
-    // {
-    //     // var_dump($user->role_id);
-    //     $request->session()->put('role_id', $user->role_id);
+    protected function authenticated(Request $request, User $user){
+       //put your thing in here
+        Session::put('role_id', $user->role_id);
+
+        return redirect()->intended('/');
         
+    }
 
-    // }
 
-
-    protected $redirectTo = '/coupons';
+    // protected $redirectTo = '/coupons';
 
     /**
      * Create a new authentication controller instance.

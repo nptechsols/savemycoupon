@@ -26,4 +26,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function user_redirect(){
+        if (session()->get('role_id')==2) {
+            return redirect()->intended('/coupons');
+        }else{
+            return redirect()->intended('/websites');
+        }
+    }
 }

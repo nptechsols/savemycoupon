@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
 
-// Route::get('/', 'CouponController@index');
+Route::get('/', 'HomeController@user_redirect');
 
 // Route::resource('/coupons',
 // 				 ['middleware' => 'auth',  function () {

@@ -42,7 +42,9 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/coupons">Coupon</a></li>
-                    <li><a href="/websites">Website</a></li>
+                    @if(session()->get('role_id')==1)
+                        <li><a href="/websites">Website</a></li>
+                    @endif
                 </ul>
 
                  <!-- Right Side Of Navbar -->

@@ -22,6 +22,7 @@ class CouponController extends Controller {
 	 */
 	public function index()
 	{
+		
 		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(16);
 
 		return view('coupons.index', compact('coupons'));

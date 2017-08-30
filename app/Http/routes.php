@@ -48,7 +48,9 @@ Route::get('admin/profile', ['middleware' => 'admin', function () {
 }]);
 
 
-Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'WebsiteController@index'));
-Route::get('searchajax',array('as'=>'searchajax','uses'=>'WebsiteController@autoComplete'));
+
+
+Route::get('search',array('as'=>'search','uses'=>'SearchController@search'));
+Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'SearchController@autocomplete'));
 
 // Route::get('/coupons', 'CouponController@index');

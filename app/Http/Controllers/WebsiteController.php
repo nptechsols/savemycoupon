@@ -173,19 +173,16 @@ class WebsiteController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request,$id)
 	{
 		$website = Website::findOrFail($id);
-		// File::delete();
+		// $file = $request->file('logo');
 
-		  // if(file_exists('/storage/{{$coupon->website->logo}}')){
-    //     @unlink('/storage/{{$coupon->website->logo}}');
-    // }
-    // parent::delete();
+		// File::delete($file);
 
 
 
-	    $image_path = public_path().'/storage'.website->logo;
+	    $image_path = public_path().'/storage/app/'.$website->logo;
 	    unlink($image_path);
 	    $website->delete();
 	   

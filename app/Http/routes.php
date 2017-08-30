@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
 
-// Route::get('/', 'CouponController@index');
+Route::get('/', 'HomeController@user_redirect');
 
 // Route::resource('/coupons',
 // 				 ['middleware' => 'auth',  function () {
@@ -48,7 +48,9 @@ Route::get('admin/profile', ['middleware' => 'admin', function () {
 }]);
 
 
-Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'WebsiteController@index'));
-Route::get('searchajax',array('as'=>'searchajax','uses'=>'WebsiteController@autoComplete'));
+
+
+Route::get('search',array('as'=>'search','uses'=>'SearchController@search'));
+Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'SearchController@autocomplete'));
 
 // Route::get('/coupons', 'CouponController@index');

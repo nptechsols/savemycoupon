@@ -22,6 +22,7 @@ class CouponController extends Controller {
 	 */
 	public function index()
 	{
+		
 		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(16);
 
 		return view('coupons.index', compact('coupons'));
@@ -127,6 +128,7 @@ class CouponController extends Controller {
 	{
 		$coupon = Coupon::findOrFail($id);
 		$coupon->delete();
+
 
 		return redirect()->route('coupons.index')->with('message', 'Item deleted successfully.');
 	}

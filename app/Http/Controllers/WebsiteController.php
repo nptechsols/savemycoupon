@@ -26,6 +26,7 @@ class WebsiteController extends Controller {
 	{
 		$websites = Website::orderBy('id', 'desc')->paginate(10);
 
+		// var_dump(storage_path());
 		return view('websites.index', compact('websites'));
 	}
 
@@ -140,11 +141,26 @@ class WebsiteController extends Controller {
 
 		$website->website = $request->input("website");
 
+
+		/*
+			$website = new Website();
+
+		$website->website = $request->input("website");
+
+		// Profile Pic storage
+		$file = $request->file('logo');
+		$extension = $file->getClientOriginalName();
+		Storage::disk('public')->put($extension,  File::get($file->getRealPath()));
+
+		$website->logo = $extension;
+
+		*/
+
 		// Logo Pic storage
 		if ($request->file('logo')) {
 			$file = $request->file('logo');
 			$extension = $file->getClientOriginalExtension();
-			Storage::disk('public')->put($extension,  File::get($file));
+			$img = Storage::disk('public')->put($extension,  File::get($file));
 
 			$website->logo = $extension;
 
@@ -176,6 +192,7 @@ class WebsiteController extends Controller {
 	public function destroy(Request $request,$id)
 	{
 		$website = Website::findOrFail($id);
+<<<<<<< HEAD
 		// $file = $request->file('logo');
 
 		// File::delete($file);
@@ -184,10 +201,14 @@ class WebsiteController extends Controller {
 
 	    $image_path = public_path().'/storage/app/'.$website->logo;
 	    unlink($image_path);
+=======
+
+		File::delete(storage_path()."/app/public/".$website->logo);
+
+>>>>>>> ae2fc5f7cba4d017769a30b7add8ffde618161fd
 	    $website->delete();
-	   
- 
-		return redirect()->route('websites.index')->with('message', 'Item deleted successfully.');
+
+	    return redirect()->route('websites.index')->with('message', 'Item deleted successfully.');
 	}
 
 }

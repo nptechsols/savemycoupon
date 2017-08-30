@@ -1,3 +1,5 @@
+@if(session()->get('role_id')==2)
+
 @extends('layout')
 
 @section('header')
@@ -19,6 +21,7 @@
                             <h5><b>{{$coupon->coupon_code}}</b></h5>
                             <img src="/storage/{{$coupon->website->logo}}" width="100px" height="100px"/>
                             <p><h5><b>{{$coupon->expiry_date}}</h5></b></p>
+                            <p><h5><b>{{@$coupon->website_id->website}}</h5></b></p>
                                 <p class="pull-left">
                                     <a class="btn btn-xs btn-primary" href="{{ route('coupons.show', $coupon->id) }}"><i class="glyphicon glyphicon-eye-open"></i> </a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('coupons.edit', $coupon->id) }}"><i class="glyphicon glyphicon-edit"></i> </a> &nbsp;
@@ -41,3 +44,11 @@
   
 
 @endsection
+
+@else
+
+    <script type="text/javascript">
+        window.location = "{{ url('login') }}";
+    </script>
+
+@endif

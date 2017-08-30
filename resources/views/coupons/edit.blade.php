@@ -1,3 +1,5 @@
+@if(session()->get('role_id')==2)
+
 @extends('layout')
 @section('css')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" rel="stylesheet">
@@ -70,3 +72,11 @@
     });
   </script>
 @endsection
+
+@else
+
+    <script type="text/javascript">
+        window.location = "{{ url('login') }}";
+    </script>
+
+@endif

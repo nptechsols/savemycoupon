@@ -34,16 +34,16 @@ class AuthController extends Controller
      * @var string
      */
 
-    protected function authenticated(Request $request, User $user){
-       //put your thing in here
-        Session::put('role_id', $user->role_id);
+    // protected function authenticated(Request $request, User $user){
+    //    //put your thing in here
+    //     Session::put('role_id', $user->role_id);
 
-        return redirect()->intended('/');
+    //     return redirect()->intended('/');
         
-    }
+    // }
 
 
-    // protected $redirectTo = '/coupons';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.

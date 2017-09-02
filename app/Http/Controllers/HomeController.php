@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -28,6 +30,11 @@ class HomeController extends Controller
     }
 
     public function user_redirect(){
+
+        $user = Auth::user();
+
+        Session::put('role_id', $user->role_id);
+
         if (session()->get('role_id')==2) {
             return redirect()->intended('/coupons');
         }else{

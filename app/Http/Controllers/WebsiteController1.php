@@ -67,7 +67,7 @@ class WebsiteController extends Controller {
 	{
 
 		$this->validate($request, [
-	        'logo' => 'required | mimes:jpeg,jpg,png | max:1000',
+	        'logo' => 'required | max:5000',
 	        // 'file_upload' => 'mimes:doc,pdf,docx', 
 	        'website' => 'required|unique:websites',
     	]);
@@ -189,23 +189,12 @@ class WebsiteController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(Request $request,$id)
+	public function destroy($id)
 	{
 		$website = Website::findOrFail($id);
-<<<<<<< HEAD
-		// $file = $request->file('logo');
-
-		// File::delete($file);
-
-
-
-	    $image_path = public_path().'/storage/app/'.$website->logo;
-	    unlink($image_path);
-=======
 
 		File::delete(storage_path()."/app/public/".$website->logo);
 
->>>>>>> ae2fc5f7cba4d017769a30b7add8ffde618161fd
 	    $website->delete();
 
 	    return redirect()->route('websites.index')->with('message', 'Item deleted successfully.');

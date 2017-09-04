@@ -1,5 +1,4 @@
-
-.<?php
+<?php
 
 namespace App;
 
@@ -16,5 +15,9 @@ class Coupon extends Model
     public function website()
 	{
     	return $this->belongsTo('App\Website');
+	}
+
+	public function user(){
+		return $this->belongsTo('App\User');
 	}
 }

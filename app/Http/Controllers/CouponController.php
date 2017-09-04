@@ -5,8 +5,9 @@ use App\Http\Controllers\Controller;
 
 use App\Coupon;
 use App\Website;
+use App\User;
 use Illuminate\Http\Request;
-
+use Auth;
 use Carbon\Carbon;
 
 class CouponController extends Controller {
@@ -22,8 +23,20 @@ class CouponController extends Controller {
 	 */
 	public function index()
 	{
-		
-		$coupons = Coupon::orderBy('expiry_date', 'asc')->paginate(16);
+		// $users = User::all();
+
+		// foreach ($users as $user) {
+  //           $user_coupons = $user->coupons()->where('expiry_date','<=',Carbon::today());
+
+            
+  //           foreach ($user_coupons as $user_coupon) {
+  //           	echo "hi";
+  //           }
+  //       }
+
+		$current_user = Auth::user();
+
+		$coupons = $current_user->coupons()->orderBy('expiry_date', 'asc')->paginate(16);
 
 		return view('coupons.index', compact('coupons'));
 	}
@@ -57,6 +70,7 @@ class CouponController extends Controller {
 		$coupon->coupon_code = $request->input("coupon_code");
         $coupon->website_id = $request->input("website");
         $coupon->description = $request->input("description");
+        $coupon->user_id = $request->input("user_id");
 
         if($request->input("expiry_date") != null)
         $coupon->expiry_date =  date("Y-m-d", strtotime($request->input("expiry_date")));

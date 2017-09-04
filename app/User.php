@@ -28,4 +28,8 @@ class User extends Authenticatable
     public function role() {
         return $this->belongToMany('App\Role');
     }
+
+    public function coupons(){
+        return $this->hasMany('App\Coupon');
+    }
 }

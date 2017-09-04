@@ -61,6 +61,8 @@
                         <span class="help-block">{{ $errors->first("expiry_date") }}</span>
                        @endif
                     </div>
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}"/>
+
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a class="btn btn-link pull-right" href="{{ route('coupons.index') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>

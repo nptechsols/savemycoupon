@@ -26,5 +26,16 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function () {
+            $users = User::all();
+
+            foreach ($users as $user) {
+                $user_coupons = $user->coupons()->where('expiry_date', '>=', DATE(NOW() - INTERVAL 1 DAY))->where('expiry_date','=',CURDATE());
+                foreach ($user_coupons as $user_coupon) {
+                    
+                }
+            }
+
+        })->daily();
     }
 }

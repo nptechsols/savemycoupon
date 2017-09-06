@@ -50,7 +50,7 @@ Route::get('admin/profile', ['middleware' => 'admin', function () {
 
 
 
-Route::get('search',array('as'=>'search','uses'=>'SearchController@search'));
-Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'SearchController@autocomplete'));
+// Route::get('search',array('as'=>'search','uses'=>'SearchController@search'));
+// Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'SearchController@autocomplete'));
 
 // Route::get('/coupons', 'CouponController@index');

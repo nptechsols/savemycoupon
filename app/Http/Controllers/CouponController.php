@@ -25,10 +25,13 @@ class CouponController extends Controller {
 	{
 		// $users = User::all();
 
-		// foreach ($users as $user) {
-  //           $user_coupons = $user->coupons()->where('expiry_date','<=',Carbon::today());
+		
 
-            
+		// foreach ($users as $user) {
+  //           $user_coupons = $user->coupons()->whereDate('expiry_date','=',Carbon::now());
+
+  //           echo $user->email;
+		// 	echo count($user_coupons)."<br/>";
   //           foreach ($user_coupons as $user_coupon) {
   //           	echo "hi";
   //           }
@@ -60,7 +63,7 @@ class CouponController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-			 $this->validate($request, [
+		$this->validate($request, [
 	        'coupon_code' => 'required|max:255',
 	        'website' => 'required',
     	]);

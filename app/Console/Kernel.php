@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\User;
+use Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -27,15 +29,15 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->call(function () {
-            // $users = User::all();
 
-            // foreach ($users as $user) {
-            //     $user_coupons = $user->coupons()->where('expiry_date', '>=', DATE(NOW() - INTERVAL 1 DAY))->where('expiry_date','=',CURDATE());
-            //     foreach ($user_coupons as $user_coupon) {
-                    
-            //     }
-            // }
+            $user = User::find(3);
+            
+            Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+                $m->from('reminder@savemycoupon.com', 'Save My Coupon');
 
-        })->daily();
+                $m->to($user->email, $user->name)->subject('Following coupons are expiring this week.');
+            });
+
+        })->everyMinute();
     }
 }

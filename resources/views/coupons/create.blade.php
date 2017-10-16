@@ -34,29 +34,19 @@
                     
                     <div class="form-group @if($errors->has('website')) has-error @endif">
                        <label for="website-field">Website</label>
-                    <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/>
+                   <!--  <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/> -->
                        @if($errors->has("website"))
                         <span class="help-block">{{ $errors->first("website") }}</span>
                        @endif
                        <!-- <select  id="website-field" name="website" class="form-control" >  
-                       @foreach($items as $item)
-                       <option  value="{{$item->id}}">{{$item->website}}</option>
-                       @endforeach
-                     </select> -->
-                    </div>
+                         @foreach($items as $item)
+                          <option  value="{{$item->id}}">{{$item->website}}</option>
+                         @endforeach
+                       </select> -->
 
-                 <!--    <div class="form-group @if($errors->has('website')) has-error @endif">
-                       <label for="website-field">Website</label> -->
-                   <!--  <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/> -->
-                       <!-- @if($errors->has("website"))
-                        <span class="help-block">{{ $errors->first("website") }}</span>
-                       @endif
-                       <select  id="website-field" name="website" class="form-control" >  
-                       @foreach($items as $item)
-                       <option  value="{{$item->id}}">{{$item->website}}</option>
-                       @endforeach
-                     </select>
-                    </div> -->
+                       <input type="text" id="website-field" name="website" class="form-control" value="{{ old("website") }}"/>
+
+                    </div>
 
 
 

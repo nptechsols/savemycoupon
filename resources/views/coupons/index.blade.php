@@ -19,7 +19,7 @@
                  @foreach($coupons as $coupon)
                     <div class="col-md-3">
                             <h5><b>{{$coupon->coupon_code}}</b></h5>
-                            <img src="/storage/{{$coupon->website->logo}}" width="100px" height="100px"/>
+                            <img src="/storage/{{$coupon->website['logo']}}" width="100px" height="100px"/>
                             <p><h5><b>{{$coupon->expiry_date}}</h5></b></p>
                             <p><h5><b>{{@$coupon->website_id->website}}</h5></b></p>
                                 <p class="pull-left">

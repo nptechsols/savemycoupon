@@ -34,6 +34,12 @@ class HomeController extends Controller
 
         $user = Auth::user();
 
+        // \Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+        //     $m->from('reminder@savemycoupon.com', 'Save My Coupon');
+
+        //     $m->to("nptechsols@gmail.com", $user->name)->subject('Following coupons are expiring this week.');
+        // });
+
         Session::put('role_id', $user->role_id);
 
         if (session()->get('role_id')==2) {

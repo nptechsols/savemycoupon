@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.sendgrid.net'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => "nptechsols@gmail.com", 'name' => "Save My Coupon"],
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => 'nptechsols',
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => 'nptech@143',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +108,15 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+    'pretend'    => false,
+
+    'stream' => [
+       'ssl' => [
+           'allow_self_signed' => true,
+           'verify_peer' => false,
+           'verify_peer_name' => false,
+       ],
+    ],
 
 ];

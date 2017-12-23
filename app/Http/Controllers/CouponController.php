@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
+use Mail;
 
 class CouponController extends Controller {
 
@@ -23,19 +24,6 @@ class CouponController extends Controller {
 	 */
 	public function index()
 	{
-		// $users = User::all();
-
-		
-
-		// foreach ($users as $user) {
-  //           $user_coupons = $user->coupons()->whereDate('expiry_date','=',Carbon::now());
-
-  //           echo $user->email;
-		// 	echo count($user_coupons)."<br/>";
-  //           foreach ($user_coupons as $user_coupon) {
-  //           	echo "hi";
-  //           }
-  //       }
 
 		$current_user = Auth::user();
 

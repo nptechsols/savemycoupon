@@ -6,7 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\User;
 use Mail;
-
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -29,16 +29,34 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
         $schedule->call(function () {
 
-            $user = User::find(3);
+            $users = User::all();
+
+            foreach ($users as $user) {
+
+                $user_coupons = $user->coupons()->whereDate('expiry_date','=',Carbon::tomorrow()->toDateString())->get();
+                
+                $expired_coupons = $user->coupons()->whereDate('expiry_date','=',Carbon::yesterday()->toDateString())->get();
+
+                if (count($user_coupons)>0) {
+                    Mail::send('emails.reminder', ['user' => $user,'user_coupons' => $user_coupons], function ($m) use ($user) {
+                        $m->from('nptechsols@gmail.com', 'Save My Coupon');
+
+                        $m->to($user->email, $user->name)->subject('Following coupons are expiring tomorrow.');
+                    });
+                }
+
+                if (count($expired_coupons)>0) {
+                    foreach ($expired_coupons as $expired_coupon){
+                        $expired_coupon->delete();
+                    }
+                }
+
+            }
             
-            \Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-                $m->from('reminder@savemycoupon.com', 'Save My Coupon');
+        })->daily();
 
-                $m->to($user->email, $user->name)->subject('Following coupons are expiring this week.');
-            });
-
-        })->everyMinute();
     }
 }

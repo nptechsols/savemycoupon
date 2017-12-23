@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Mail;
 use Auth;
 use Session;
 
@@ -33,12 +32,6 @@ class HomeController extends Controller
     public function user_redirect(){
 
         $user = Auth::user();
-
-        // \Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-        //     $m->from('reminder@savemycoupon.com', 'Save My Coupon');
-
-        //     $m->to("nptechsols@gmail.com", $user->name)->subject('Following coupons are expiring this week.');
-        // });
 
         Session::put('role_id', $user->role_id);
 

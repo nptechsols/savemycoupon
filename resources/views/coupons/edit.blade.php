@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group @if($errors->has('expiry_date')) has-error @endif">
                        <label for="expiry_date-field">Expiry_date</label>
-                    <input type="text" id="expiry_date-field" name="expiry_date" class="form-control date-picker" value="{{ is_null(old("expiry_date")) ? $coupon->expiry_date : old("expiry_date") }}"/>
+                    <input type="text" id="expiry_date-field" name="expiry_date" class="form-control date-picker" value="{{ is_null(old("expiry_date")) ? date("d-m-Y", strtotime($coupon->expiry_date)) : old("expiry_date") }}"/>
                        @if($errors->has("expiry_date"))
                         <span class="help-block">{{ $errors->first("expiry_date") }}</span>
                        @endif
@@ -68,7 +68,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
   <script>
     $('.date-picker').datepicker({
-      format: 'mm/dd/yyyy'
+      format: 'dd-mm-yyyy'
     });
   </script>
 @endsection

@@ -64,7 +64,7 @@ class CouponController extends Controller {
         $coupon->user_id = $request->input("user_id");
 
         if($request->input("expiry_date") != null)
-        $coupon->expiry_date =  date("Y-m-d", strtotime($request->input("expiry_date")));
+        	$coupon->expiry_date =  date("Y-m-d", strtotime($request->input("expiry_date")));
       
 
 		$coupon->save();

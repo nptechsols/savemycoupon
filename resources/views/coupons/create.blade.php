@@ -80,7 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script>
     $('.date-picker').datepicker({
-     format: 'mm/dd/yyyy'
+     format: 'dd-mm-yyyy'
     });
   </script>
   <!-- <script>

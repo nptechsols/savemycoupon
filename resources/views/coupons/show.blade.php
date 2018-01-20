@@ -36,7 +36,7 @@
                 </div>
                     <div class="form-group">
                      <label for="expiry_date">EXPIRY_DATE</label>
-                     <p class="form-control-static">{{$coupon->expiry_date}}</p>
+                     <p class="form-control-static">{{date("d-m-Y", strtotime($coupon->expiry_date))}}</p>
                 </div>
             </form>
 

@@ -20,27 +20,32 @@
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <div class="form-group @if($errors->has('coupon_code')) has-error @endif">
+                  <div class="form-group @if($errors->has('coupon_code')) has-error @endif">
                        <label for="coupon_code-field">Coupon_code</label>
                     <input type="text" id="coupon_code-field" name="coupon_code" class="form-control" value="{{ is_null(old("coupon_code")) ? $coupon->coupon_code : old("coupon_code") }}"/>
                        @if($errors->has("coupon_code"))
                         <span class="help-block">{{ $errors->first("coupon_code") }}</span>
                        @endif
                     </div>
+
+
                     <div class="form-group @if($errors->has('website')) has-error @endif">
-                       <label for="website-field">Website</label>
-                    <!-- <input type="text" id="website-field" name="website" class="form-control" value="{{ is_null(old("website")) ? $coupon->website : old("website") }}"/> -->
-                       @if($errors->has("website"))
+                       <label for="website-field">Website</label>                       @if($errors->has("website"))
                         <span class="help-block">{{ $errors->first("website") }}</span>
                        @endif
 
                        <select  id="website-field" name="website" class="form-control" >  
                        @foreach($items as $item)
-                       <option  value="{{$item->website}}">{{$item->website}}</option>
+                       <!-- <option  value="{{$item->id}}">{{$item->website}}</option> -->
+                       <!-- <option  value="{{$item->id}}" >{{$item->website}}</option> -->
+                       <option value="<?php echo $item->id; ?>" <?php echo $coupon->website->id == $item->id ? "selected" : ""; ?> ><?php echo $item->website; ?></option>
                        @endforeach
                      </select>
                      
                     </div>
+
+
+
                     <div class="form-group @if($errors->has('description')) has-error @endif">
                        <label for="description-field">Description</label>
                     <textarea class="form-control" id="description-field" rows="3" name="description">{{ is_null(old("description")) ? $coupon->description : old("description") }}</textarea>
@@ -55,6 +60,7 @@
                         <span class="help-block">{{ $errors->first("expiry_date") }}</span>
                        @endif
                     </div>
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}"/>
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">Save</button>
                     <a class="btn btn-link pull-right" href="{{ route('coupons.index') }}"><i class="glyphicon glyphicon-backward"></i>  Back</a>

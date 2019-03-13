@@ -110,10 +110,11 @@ class CouponController extends Controller {
 	public function update(Request $request, $id)
 	{
 		$coupon = Coupon::findOrFail($id);
-
+		print_r($coupon);
 		$coupon->coupon_code = $request->input("coupon_code");
         $coupon->website_id = $request->input("website");
         $coupon->description = $request->input("description");
+        $coupon->user_id = $request->input("user_id");
 
         if($request->input("expiry_date") != null)
         $coupon->expiry_date = date("Y-m-d", strtotime($request->input("expiry_date")));
@@ -133,8 +134,6 @@ class CouponController extends Controller {
 	{
 		$coupon = Coupon::findOrFail($id);
 		$coupon->delete();
-
-
 		return redirect()->route('coupons.index')->with('message', 'Item deleted successfully.');
 	}
 
